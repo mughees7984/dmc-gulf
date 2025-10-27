@@ -1,0 +1,250 @@
+{
+  "nav": {
+    "destinations": "Destinations",
+    "services": "Services",
+    "experiences": "Experiences",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "header": {
+    "phone": "📞 +971 4444 5555",
+    "email": "✉️ info@dmcgulf.com",
+    "button": "Get in Touch"
+  },
+  "hero": {
+    "title": "Explore the Gulf Like Never Before",
+    "subtitle": "Discover top destinations, premium services, and unforgettable experiences.",
+    "button": "Plan Your Journey"
+  },
+  "destinations": {
+    "badge": "POPULAR CHOICES",
+    "title": "Discover Breathtaking Destinations",
+    "subtitle": "From the shimmering skyline of Dubai to the cultural heart of Doha — explore the best of the Gulf.",
+    "button": "View All Destinations",
+    "cards": {
+      "doha": {
+        "name": "Doha",
+        "country": "Qatar",
+        "description": "A stunning mix of tradition and modern architecture by the Persian Gulf.",
+        "badge": "Featured"
+      },
+      "dubai": {
+        "name": "Dubai",
+        "country": "UAE",
+        "description": "Home of luxury, innovation, and the world’s tallest buildings.",
+        "badge": "Popular"
+      },
+      "abuDhabi": {
+        "name": "Abu Dhabi",
+        "country": "UAE",
+        "description": "Cultural capital with grand mosques, art museums, and scenic beaches."
+      },
+      "riyadh": {
+        "name": "Riyadh",
+        "country": "Saudi Arabia",
+        "description": "Where modern business meets ancient Arabian heritage."
+      }
+    }
+  },
+  "services": {
+    "badge": "Comprehensive Services",
+    "title": "Your Gulf Journey",
+    "highlight": "Simplified",
+    "subtitle": "From luxury accommodations to bespoke experiences, we handle every detail of your Gulf adventure with precision and care.",
+    "learnMore": "Learn More",
+    "cards": {
+      "hotel": {
+        "alt": "Hotel icon",
+        "title": "Hotel Reservations",
+        "description": "Access exclusive rates at the Gulf's most prestigious hotels and resorts, from beachfront sanctuaries to urban elegance.",
+        "features": [
+          "5-star luxury properties",
+          "Exclusive member rates",
+          "24/7 concierge support"
+        ]
+      },
+      "flight": {
+        "alt": "Flight icon",
+        "title": "Flight Bookings",
+        "description": "Seamless flight arrangements with premium airlines, featuring business class comfort and flexible booking options.",
+        "features": [
+          "Premium airline partnerships",
+          "Flexible cancellation",
+          "Priority check-in"
+        ]
+      },
+      "adventure": {
+        "alt": "Adventure icon",
+        "title": "Desert Adventures",
+        "description": "Immersive desert experiences from luxury camping to thrilling activities, showcasing the region's natural beauty.",
+        "features": [
+          "Luxury desert camps",
+          "Cultural experiences",
+          "Adventure activities"
+        ]
+      },
+      "corporate": {
+        "alt": "Corporate icon",
+        "title": "Corporate Events",
+        "description": "Professional event management for conferences, incentive trips, and corporate retreats in world-class venues.",
+        "features": [
+          "Event planning expertise",
+          "Premium venues",
+          "Full-service support"
+        ]
+      }
+    }
+  },
+  "testimonials": {
+    "badge": "Client Testimonials",
+    "title": "Stories of",
+    "highlight": "Excellence",
+    "subtitle": "Hear from our valued clients who have experienced the magic of the Gulf through our expert guidance and personalized service.",
+    "cards": [
+      {
+        "id": 1,
+        "rating": 5,
+        "text": "DMC Gulf transformed our corporate retreat into an unforgettable experience. Every detail was perfectly orchestrated, from the luxury accommodations to the cultural experiences. Truly exceptional service.",
+        "author": {
+          "name": "Sarah Johnson",
+          "title": "CEO, Global Innovations",
+          "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop"
+        }
+      },
+      {
+        "id": 2,
+        "rating": 5,
+        "text": "Our family vacation to the Gulf was absolutely magical. The team's attention to detail and local knowledge made every moment special. We can't wait to return!",
+        "author": {
+          "name": "Michael Chen",
+          "title": "Travel Enthusiast",
+          "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop"
+        }
+      },
+      {
+        "id": 3,
+        "rating": 5,
+        "text": "The luxury yacht experience was beyond our expectations. Professional, elegant, and perfectly executed. DMC Gulf knows how to deliver premium experiences.",
+        "author": {
+          "name": "Emma Rodriguez",
+          "title": "Luxury Travel Enthusiast",
+          "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop"
+        }
+      }
+    ]
+  },
+  "newsletter": {
+    "badge": "Stay Connected",
+    "title": "Never Miss a",
+    "highlight": "Gulf Adventure",
+    "subtitle": "Subscribe to our newsletter and be the first to know about exclusive offers, new destinations, and insider travel tips from the Gulf region.",
+    "placeholder": "Enter your email address",
+    "button": "Subscribe Now",
+    "note": "Join 5,000+ travelers who trust DMC Gulf for their luxury experiences. Unsubscribe anytime.",
+    "features": [
+      {
+        "image": "/deals.png",
+        "title": "Exclusive Deals",
+        "description": "Member-only discounts"
+      },
+      {
+        "image": "/guides.png",
+        "title": "Travel Guides",
+        "description": "Insider destination tips"
+      },
+      {
+        "image": "/updates.png",
+        "title": "Event Updates",
+        "description": "Curated events & itineraries"
+      },
+      {
+        "image": "/offers.png",
+        "title": "Special Offers",
+        "description": "Seasonal promotions"
+      }
+    ]
+  },
+  "contact": {
+    "badge": "Get in Touch",
+    "heading": "Plan Your Gulf",
+    "headingAccent": "Escape Today",
+    "description": "Ready to experience the magic of the Gulf? Our expert team is here to create your perfect luxury travel experience.",
+    "formTitle": "Start Planning Your Journey",
+    "submitButton": "Send My Request",
+    "submittingButton": "Sending...",
+    "successMessage": "Your request was sent — we'll contact you soon.",
+    "contactTitle": "Contact Information",
+    "socialTitle": "Follow Our Journey",
+    "socialDescription": "Stay updated with our latest adventures and exclusive offers on social media.",
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "destination": "Preferred Destination",
+      "message": "Tell us about your ideal trip"
+    },
+    "placeholders": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john@example.com",
+      "phone": "+1 (555) 000-0000",
+      "message": "Describe your travel preferences, dates, group size, and any special requirements..."
+    },
+    "info": {
+      "headOffice": {
+        "title": "Head Office",
+        "lines": ["Al Sadd Street, Tower 15, Floor 12", "Doha, Qatar"]
+      },
+      "phone": {
+        "title": "Phone",
+        "lines": ["+974 4444 5555", "+971 4 123 4567"]
+      },
+      "email": {
+        "title": "Email",
+        "lines": ["info@dmcgulf.com", "bookings@dmcgulf.com"]
+      },
+      "hours": {
+        "title": "Business Hours",
+        "lines": [
+          "Sunday - Thursday: 8:00 AM - 6:00 PM",
+          "24/7 Emergency Support"
+        ]
+      }
+    },
+    "destinations": {
+      "dubai": "Dubai",
+      "abu-dhabi": "Abu Dhabi",
+      "qatar": "Qatar",
+      "oman": "Oman",
+      "saudi-arabia": "Saudi Arabia"
+    }
+  },
+  "footer": {
+    "description": "Your premier destination management company in the Gulf region. We create extraordinary luxury experiences that exceed expectations and forge lasting memories across Qatar, UAE, Oman, Saudi Arabia, and Bahrain.",
+    "quickLinks": {
+      "title": "Quick Links",
+      "destinations": "Destinations",
+      "services": "Services",
+      "experiences": "Experiences",
+      "about": "About Us",
+      "blog": "Travel Blog",
+      "contact": "Contact"
+    },
+    "services": {
+      "title": "Our Services",
+      "hotel": "Hotel Reservations",
+      "flight": "Flight Bookings",
+      "desert": "Desert Adventures",
+      "corporate": "Corporate Events",
+      "luxury": "Luxury Tours",
+      "packages": "Custom Packages"
+    },
+    "legal": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookie Policy"
+    },
+    "bottomText": "© 2024 DMC Gulf. All rights reserved. | Licensed Travel Agency #04-2024-001"
+  }
+}

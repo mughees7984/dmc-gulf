@@ -1,7 +1,7 @@
 import { Header } from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import DestinationsSection from "./components/DestinationsSection";
-import { ServicesSection } from "./components/ServicesSection";
+import  ServicesSection   from "./components/ServicesSection";
 import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
 import Newsletter from "./components/NewsLetter";

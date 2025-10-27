@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { ServiceCard } from "./ServiceCard";
 
 interface ServiceData {
@@ -9,79 +10,57 @@ interface ServiceData {
   features: string[];
 }
 
-// Moved constants to a separate file or upper level
-const SERVICES: readonly ServiceData[] = [
-  {
-    iconSrc: "/hotel.png",
-    alt: "Hotel icon",
-    title: "Hotel Reservations",
-    description:
-      "Access exclusive rates at the Gulf's most prestigious hotels and resorts, from beachfront sanctuaries to urban elegance.",
-    features: [
-      "5-star luxury properties",
-      "Exclusive member rates",
-      "24/7 concierge support",
-    ],
-  },
-  {
-    iconSrc: "/flight.png",
-    alt: "Flight icon",
-    title: "Flight Bookings",
-    description:
-      "Seamless flight arrangements with premium airlines, featuring business class comfort and flexible booking options.",
-    features: [
-      "Premium airline partnerships",
-      "Flexible cancellation",
-      "Priority check-in",
-    ],
-  },
-  {
-    iconSrc: "/adventure.png",
-    alt: "Adventure icon",
-    title: "Desert Adventures",
-    description:
-      "Immersive desert experiences from luxury camping to thrilling activities, showcasing the region's natural beauty.",
-    features: [
-      "Luxury desert camps",
-      "Cultural experiences",
-      "Adventure activities",
-    ],
-  },
-  {
-    iconSrc: "/corporate.png",
-    alt: "Corporate icon",
-    title: "Corporate Events",
-    description:
-      "Professional event management for conferences, incentive trips, and corporate retreats in world-class venues.",
-    features: [
-      "Event planning expertise",
-      "Premium venues",
-      "Full-service support",
-    ],
-  },
-] as const;
+const ServicesSection: React.FC = () => {
+  const { t } = useTranslation();
 
-// Extracted sub-components for better organization
-const SectionHeader: React.FC = () => (
-  <header className="text-center mb-12 sm:mb-16">
-    <div className="mb-4 sm:mb-6">
-      <span className="text-xs sm:text-sm bg-[#40B5AD33] text-[#40B5AD] font-semibold tracking-widest uppercase border border-[#40B5AD4D] rounded-full px-3 sm:px-4 py-1.5 sm:py-2">
-        Comprehensive Services
-      </span>
-    </div>
-    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6">
-      Your Gulf Journey{" "}
-      <span className="text-[#E6C98E] font-bold">Simplified</span>
-    </h2>
-    <p className="text-sm sm:text-base md:text-xl text-[#F4F4F4B2] leading-[33px] max-w-2xl mx-auto px-2">
-      From luxury accommodations to bespoke experiences, we handle every detail
-      of your Gulf adventure with precision and care.
-    </p>
-  </header>
-);
+  const SERVICES: readonly ServiceData[] = [
+    {
+      iconSrc: "/hotel.png",
+      alt: t("services.cards.hotel.alt"),
+      title: t("services.cards.hotel.title"),
+      description: t("services.cards.hotel.description"),
+      features: [
+        t("services.cards.hotel.features.0"),
+        t("services.cards.hotel.features.1"),
+        t("services.cards.hotel.features.2"),
+      ],
+    },
+    {
+      iconSrc: "/flight.png",
+      alt: t("services.cards.flight.alt"),
+      title: t("services.cards.flight.title"),
+      description: t("services.cards.flight.description"),
+      features: [
+        t("services.cards.flight.features.0"),
+        t("services.cards.flight.features.1"),
+        t("services.cards.flight.features.2"),
+      ],
+    },
+    {
+      iconSrc: "/adventure.png",
+      alt: t("services.cards.adventure.alt"),
+      title: t("services.cards.adventure.title"),
+      description: t("services.cards.adventure.description"),
+      features: [
+        t("services.cards.adventure.features.0"),
+        t("services.cards.adventure.features.1"),
+        t("services.cards.adventure.features.2"),
+      ],
+    },
+    {
+      iconSrc: "/corporate.png",
+      alt: t("services.cards.corporate.alt"),
+      title: t("services.cards.corporate.title"),
+      description: t("services.cards.corporate.description"),
+      features: [
+        t("services.cards.corporate.features.0"),
+        t("services.cards.corporate.features.1"),
+        t("services.cards.corporate.features.2"),
+      ],
+    },
+  ];
 
-export const ServicesSection: React.FC = () => {
-  const renderServiceCard = React.useCallback(
+  const renderServiceCard = useCallback(
     ({ iconSrc, alt, title, description, features }: ServiceData) => (
       <ServiceCard
         key={title}
@@ -106,7 +85,25 @@ export const ServicesSection: React.FC = () => {
       className="w-full bg-background py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-7xl mx-auto">
-        <SectionHeader />
+        {/* Header */}
+        <header className="text-center mb-12 sm:mb-16">
+          <div className="mb-4 sm:mb-6">
+            <span className="text-xs sm:text-sm bg-[#40B5AD33] text-[#40B5AD] font-semibold tracking-widest uppercase border border-[#40B5AD4D] rounded-full px-3 sm:px-4 py-1.5 sm:py-2">
+              {t("services.badge")}
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6">
+            {t("services.title")}{" "}
+            <span className="text-[#E6C98E] font-bold">
+              {t("services.highlight")}
+            </span>
+          </h2>
+          <p className="text-sm sm:text-base md:text-xl text-[#F4F4F4B2] leading-[33px] max-w-2xl mx-auto px-2">
+            {t("services.subtitle")}
+          </p>
+        </header>
+
+        {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {SERVICES.map(renderServiceCard)}
         </div>
@@ -114,3 +111,5 @@ export const ServicesSection: React.FC = () => {
     </section>
   );
 };
+
+export default ServicesSection;

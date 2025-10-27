@@ -1,22 +1,30 @@
 import type React from "react";
 import { Menu } from "lucide-react";
 import Button from "./Button";
+import { useTranslation } from "react-i18next";
 
 interface HeaderProps {
   onMenuClick?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
+  const { t, i18n } = useTranslation();
+
   const navItems = [
-    "Destinations",
-    "Services",
-    "Experiences",
-    "About",
-    "Contact",
+    { key: "destinations", link: "#" },
+    { key: "services", link: "#" },
+    { key: "experiences", link: "#" },
+    { key: "about", link: "#" },
+    { key: "contact", link: "#" },
   ];
 
+  const switchLanguage = (lang: string) => {
+    i18n.changeLanguage(lang);
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  };
+
   return (
-    <header className="fixed top-0 w-full z-50 border bg-[#00000000] border-b-[#E6C98E33] ">
+    <header className="fixed top-0 w-full z-50 border bg-[#00000000] border-b-[#E6C98E33]">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <img src="div.png" alt="logo" />
@@ -25,11 +33,11 @@ export const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
         <nav className="hidden md:flex items-center gap-8 font-inter text-[16px]">
           {navItems.map((item) => (
             <a
-              key={item}
-              href="#"
+              key={item.key}
+              href={item.link}
               className="text-sm text-foreground hover:text-primary transition-colors duration-300"
             >
-              {item}
+              {t(`nav.${item.key}`)}
             </a>
           ))}
         </nav>
@@ -41,17 +49,18 @@ export const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
               href="tel:+97144445555"
               className="text-foreground hover:text-primary transition-colors"
             >
-              📞 +971 4444 5555
+              {t("header.phone")}
             </a>
             <a
               href="mailto:info@dmcgulf.com"
               className="text-foreground hover:text-primary transition-colors"
             >
-              ✉️ info@dmcgulf.com
+              {t("header.email")}
             </a>
           </div>
           {/* Button */}
-          <Button />
+          {/* <Button label={t("header.button")} /> */}
+          <Button labelKey="header.button" />
         </div>
 
         {/* Mobile Menu Button */}
@@ -61,6 +70,23 @@ export const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
         >
           <Menu size={24} />
         </button>
+
+        {/* Language Switcher */}
+        <div className="hidden md:flex items-center gap-2 ml-4">
+          <button
+            onClick={() => switchLanguage("en")}
+            className="text-sm hover:text-primary transition"
+          >
+            EN
+          </button>
+          <span className="text-gray-400">|</span>
+          <button
+            onClick={() => switchLanguage("ar")}
+            className="text-sm hover:text-primary transition"
+          >
+            AR
+          </button>
+        </div>
       </div>
     </header>
   );

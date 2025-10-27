@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Types
 interface ImageCard {
@@ -6,6 +7,7 @@ interface ImageCard {
   alt: string;
   className?: string;
 }
+
 
 // Image Card Component
 const ImageCard: React.FC<ImageCard> = ({ src, alt, className = "" }) => {
@@ -21,6 +23,7 @@ const ImageCard: React.FC<ImageCard> = ({ src, alt, className = "" }) => {
 
 // Hero Section Component
 const HeroSection: React.FC = () => {
+  const { t } = useTranslation();
   const images: ImageCard[] = [
     {
       src: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&h=800&fit=crop",
@@ -57,10 +60,10 @@ const HeroSection: React.FC = () => {
           {/* Text Content */}
           <div className=" absolute  z-50 text-center space-y-6 mb-8">
             <h1 className="text-4xl md:text-6xl lg:text-5xl font-bold text-white leading-tight px-4">
-              Experience the – Redefined
+              {t("hero.title")}
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-gray-300 font-light tracking-wide">
-              Adventure is never far away
+              {t("hero.subtitle")}
             </p>
           </div>
 

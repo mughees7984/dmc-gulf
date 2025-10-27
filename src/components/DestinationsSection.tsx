@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ChevronLeft, ChevronRight, Star, ArrowRight } from "lucide-react";
 import Button from "./Button";
 
@@ -17,7 +18,7 @@ interface Destination {
 }
 
 // =======================
-// DestinationCard Component (Pure UI)
+// DestinationCard Component
 // =======================
 const DestinationCard: React.FC<{ destination: Destination }> = ({
   destination,
@@ -60,7 +61,6 @@ const DestinationCard: React.FC<{ destination: Destination }> = ({
         {destination.description}
       </p>
 
-      {/* Rating and Experiences */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1">
@@ -72,7 +72,6 @@ const DestinationCard: React.FC<{ destination: Destination }> = ({
           </span>
         </div>
 
-        {/* Action Arrow */}
         <button
           aria-label={`View details for ${destination.name}`}
           className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors group-hover:bg-amber-400 group-hover:text-black"
@@ -88,39 +87,38 @@ const DestinationCard: React.FC<{ destination: Destination }> = ({
 // DestinationsSection Component
 // =======================
 const DestinationsSection: React.FC = () => {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Destinations localized
   const destinations: Destination[] = [
     {
       id: 1,
-      name: "Doha",
-      country: "Qatar",
-      description:
-        "Experience the perfect blend of modern luxury and traditional Arabian culture in Qatar's magnificent capital.",
+      name: t("destinations.cards.doha.name"),
+      country: t("destinations.cards.doha.country"),
+      description: t("destinations.cards.doha.description"),
       rating: 4.9,
       experiences: 127,
       image:
         "https://images.unsplash.com/photo-1549144511-f099e773c147?w=800&h=1000&fit=crop",
-      badge: "Featured",
+      badge: t("destinations.cards.doha.badge") as "Featured",
     },
     {
       id: 2,
-      name: "Dubai",
-      country: "UAE",
-      description:
-        "Discover the city of superlatives with its iconic skyline, luxury shopping, and world-class hospitality.",
+      name: t("destinations.cards.dubai.name"),
+      country: t("destinations.cards.dubai.country"),
+      description: t("destinations.cards.dubai.description"),
       rating: 4.8,
       experiences: 203,
       image:
         "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&h=1000&fit=crop",
-      badge: "Popular",
+      badge: t("destinations.cards.dubai.badge") as "Popular",
     },
     {
       id: 3,
-      name: "Abu Dhabi",
-      country: "UAE",
-      description:
-        "The capital of elegance, where cultural treasures meet contemporary luxury and pristine beaches.",
+      name: t("destinations.cards.abuDhabi.name"),
+      country: t("destinations.cards.abuDhabi.country"),
+      description: t("destinations.cards.abuDhabi.description"),
       rating: 4.7,
       experiences: 89,
       image:
@@ -128,10 +126,9 @@ const DestinationsSection: React.FC = () => {
     },
     {
       id: 4,
-      name: "Riyadh",
-      country: "Saudi Arabia",
-      description:
-        "A dynamic blend of tradition and modernity in the heart of the Arabian Peninsula.",
+      name: t("destinations.cards.riyadh.name"),
+      country: t("destinations.cards.riyadh.country"),
+      description: t("destinations.cards.riyadh.description"),
       rating: 4.6,
       experiences: 156,
       image:
@@ -155,23 +152,18 @@ const DestinationsSection: React.FC = () => {
         {/* Header */}
         <header className="text-center mb-16">
           <span className="bg-[#8A15384D] rounded-full px-3 py-3 font-inter text-[#E6C98E] text-xs font-medium tracking-[0.3em] uppercase">
-            Premium Destinations
+            {t("destinations.badge")}
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 mt-4">
-            Discover the{" "}
-            <span className="text-[#E6C98E] font-bold text-[60px]">
-              Gulf's Finest
-            </span>
+            {t("destinations.title")}
           </h2>
           <p className="text-[#F4F4F4B2] font-inter font-normal text-base md:text-lg max-w-3xl mx-auto">
-            From the architectural marvels of Doha to the luxury of Dubai,
-            explore destinations that redefine opulence and adventure.
+            {t("destinations.subtitle")}
           </p>
         </header>
 
         {/* Carousel */}
         <div className="relative">
-          {/* Navigation */}
           <button
             onClick={handlePrev}
             aria-label="Previous destination"
@@ -188,11 +180,10 @@ const DestinationsSection: React.FC = () => {
             <ChevronRight className="w-6 h-6 text-white" />
           </button>
 
-          {/* Cards */}
           <div className="overflow-hidden px-8">
             <div
               className="flex gap-6 transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${currentIndex * 344}px)` }} // 320 card + 24 gap
+              style={{ transform: `translateX(-${currentIndex * 344}px)` }}
             >
               {destinations.map((destination) => (
                 <DestinationCard
@@ -207,7 +198,7 @@ const DestinationsSection: React.FC = () => {
         {/* CTA */}
         <div className="flex justify-center mt-12">
           <Button className="px-6 py-3 text-black text-sm font-inter font-bold">
-            View All Destinations
+            {t("destinations.button")}
           </Button>
         </div>
       </div>
