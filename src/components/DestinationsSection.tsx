@@ -22,73 +22,94 @@ interface Destination {
 // =======================
 const DestinationCard: React.FC<{ destination: Destination }> = ({
   destination,
-}) => (
-  <article
-    className="relative group flex-shrink-0 w-80 h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 transition-transform duration-300 hover:scale-105"
-    aria-label={`${destination.name}, ${destination.country}`}
-  >
-    {/* Background Image */}
-    <div className="absolute inset-0">
-      <img
-        src={destination.image}
-        alt={`${destination.name} destination`}
-        className="w-full h-full object-cover opacity-60 group-hover:opacity-70 transition-opacity duration-300"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-    </div>
+}) => {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.dir() === "rtl";
 
-    {/* Badge */}
-    {destination.badge && (
-      <div className="absolute top-4 right-4 z-10">
-        <span
-          className={`px-4 py-1 rounded-full text-sm font-medium ${
-            destination.badge === "Featured"
-              ? "bg-[#E6C98E33] text-[#E6C98E]"
-              : "bg-[#40B5AD4D] text-[#40B5AD]"
-          }`}
-        >
-          {destination.badge}
-        </span>
+  return (
+    <article
+      className={`relative group flex-shrink-0 w-80 h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 transition-transform duration-300 hover:scale-105 ${
+        isRTL ? "text-right" : "text-left"
+      }`}
+      aria-label={`${destination.name}, ${destination.country}`}
+    >
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src={destination.image}
+          alt={`${destination.name} destination`}
+          className="w-full h-full object-cover opacity-60 group-hover:opacity-70 transition-opacity duration-300"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
       </div>
-    )}
 
-    {/* Content */}
-    <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-      <h3 className="text-2xl font-bold text-white mb-2">
-        {destination.name}, {destination.country}
-      </h3>
-      <p className="text-gray-300 text-sm mb-4 line-clamp-2">
-        {destination.description}
-      </p>
-
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1">
-            <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-            <span className="text-white font-medium">{destination.rating}</span>
-          </div>
-          <span className="text-gray-400 text-sm">
-            {destination.experiences} experiences
+      {/* Badge */}
+      {destination.badge && (
+        <div className={`absolute top-4 ${isRTL ? "left-4" : "right-4"} z-10`}>
+          <span
+            className={`px-4 py-1 rounded-full text-sm font-medium ${
+              destination.badge === "Featured"
+                ? "bg-[#E6C98E33] text-[#E6C98E]"
+                : "bg-[#40B5AD4D] text-[#40B5AD]"
+            }`}
+          >
+            {destination.badge}
           </span>
         </div>
+      )}
 
-        <button
-          aria-label={`View details for ${destination.name}`}
-          className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors group-hover:bg-amber-400 group-hover:text-black"
-        >
-          <ArrowRight className="w-4 h-4 text-white group-hover:text-black" />
-        </button>
+      {/* Content */}
+      <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+        <h3 className="text-2xl font-bold text-white mb-2">
+          {destination.name}, {destination.country}
+        </h3>
+        <p className="text-gray-300 text-sm mb-4 line-clamp-2">
+          {destination.description}
+        </p>
+
+        <div className="flex items-center justify-between">
+          <div
+            className={`flex items-center gap-4 ${
+              isRTL ? "flex-row-reverse" : ""
+            }`}
+          >
+            <div className="flex items-center gap-1">
+              <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+              <span className="text-white font-medium">
+                {destination.rating}
+              </span>
+              <span className="text-gray-400 text-xs ml-1">
+                {t("destinations.ratingLabel")}
+              </span>
+            </div>
+            <span className="text-gray-400 text-sm">
+              {destination.experiences} {t("destinations.experiencesLabel")}
+            </span>
+          </div>
+
+          <button
+            aria-label={`View details for ${destination.name}`}
+            className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors group-hover:bg-amber-400 group-hover:text-black"
+          >
+            <ArrowRight
+              className={`w-4 h-4 text-white group-hover:text-black ${
+                isRTL ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+        </div>
       </div>
-    </div>
-  </article>
-);
+    </article>
+  );
+};
 
 // =======================
 // DestinationsSection Component
 // =======================
 const DestinationsSection: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const isRTL = i18n.dir() === "rtl";
 
   // Destinations localized
   const destinations: Destination[] = [
@@ -138,19 +159,31 @@ const DestinationsSection: React.FC = () => {
 
   const handlePrev = () =>
     setCurrentIndex((prev) =>
-      prev === 0 ? destinations.length - 1 : prev - 1
+      isRTL
+        ? prev === destinations.length - 1
+          ? 0
+          : prev + 1
+        : prev === 0
+        ? destinations.length - 1
+        : prev - 1
     );
 
   const handleNext = () =>
     setCurrentIndex((prev) =>
-      prev === destinations.length - 1 ? 0 : prev + 1
+      isRTL
+        ? prev === 0
+          ? destinations.length - 1
+          : prev - 1
+        : prev === destinations.length - 1
+        ? 0
+        : prev + 1
     );
 
   return (
     <section className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 py-20 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <header className="text-center mb-16">
+        <header className={`text-center mb-16 ${isRTL ? "rtl" : ""}`}>
           <span className="bg-[#8A15384D] rounded-full px-3 py-3 font-inter text-[#E6C98E] text-xs font-medium tracking-[0.3em] uppercase">
             {t("destinations.badge")}
           </span>
@@ -167,7 +200,9 @@ const DestinationsSection: React.FC = () => {
           <button
             onClick={handlePrev}
             aria-label="Previous destination"
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors -translate-x-6"
+            className={`absolute top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors ${
+              isRTL ? "right-0 translate-x-6" : "left-0 -translate-x-6"
+            }`}
           >
             <ChevronLeft className="w-6 h-6 text-white" />
           </button>
@@ -175,15 +210,21 @@ const DestinationsSection: React.FC = () => {
           <button
             onClick={handleNext}
             aria-label="Next destination"
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors translate-x-6"
+            className={`absolute top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors ${
+              isRTL ? "left-0 -translate-x-6" : "right-0 translate-x-6"
+            }`}
           >
             <ChevronRight className="w-6 h-6 text-white" />
           </button>
 
           <div className="overflow-hidden px-8">
             <div
-              className="flex gap-6 transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${currentIndex * 344}px)` }}
+              className={`flex gap-6 transition-transform duration-500 ease-out ${
+                isRTL ? "flex-row-reverse" : ""
+              }`}
+              style={{
+                transform: `translateX(-${currentIndex * 344}px)`,
+              }}
             >
               {destinations.map((destination) => (
                 <DestinationCard

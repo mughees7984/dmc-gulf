@@ -1,66 +1,86 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import SocialLinks from "./SocialLinks";
 
-// Types
 interface FooterLink {
-  label: string;
+  labelKey: string;
   href: string;
 }
 
-// Footer Component
 const Footer: React.FC = () => {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === "ar";
+
   const quickLinks: FooterLink[] = [
-    { label: "Destinations", href: "#destinations" },
-    { label: "Services", href: "#services" },
-    { label: "Experiences", href: "#experiences" },
-    { label: "About Us", href: "#about" },
-    { label: "Travel Blog", href: "#blog" },
-    { label: "Contact", href: "#contact" },
+    { labelKey: "footer.quickLinks.destinations", href: "#destinations" },
+    { labelKey: "footer.quickLinks.services", href: "#services" },
+    { labelKey: "footer.quickLinks.experiences", href: "#experiences" },
+    { labelKey: "footer.quickLinks.about", href: "#about" },
+    { labelKey: "footer.quickLinks.blog", href: "#blog" },
+    { labelKey: "footer.quickLinks.contact", href: "#contact" },
   ];
 
   const serviceLinks: FooterLink[] = [
-    { label: "Hotel Reservations", href: "#hotels" },
-    { label: "Flight Bookings", href: "#flights" },
-    { label: "Desert Adventures", href: "#desert" },
-    { label: "Corporate Events", href: "#corporate" },
-    { label: "Luxury Tours", href: "#luxury" },
-    { label: "Custom Packages", href: "#packages" },
+    { labelKey: "footer.services.hotels", href: "#hotels" },
+    { labelKey: "footer.services.flights", href: "#flights" },
+    { labelKey: "footer.services.desert", href: "#desert" },
+    { labelKey: "footer.services.corporate", href: "#corporate" },
+    { labelKey: "footer.services.luxury", href: "#luxury" },
+    { labelKey: "footer.services.packages", href: "#packages" },
   ];
 
   const legalLinks: FooterLink[] = [
-    { label: "Privacy Policy", href: "#privacy" },
-    { label: "Terms of Service", href: "#terms" },
-    { label: "Cookie Policy", href: "#cookies" },
+    { labelKey: "footer.legal.privacy", href: "#privacy" },
+    { labelKey: "footer.legal.terms", href: "#terms" },
+    { labelKey: "footer.legal.cookies", href: "#cookies" },
   ];
 
   return (
-    <footer className="bg-black text-white border-t border-gray-800">
+    <footer
+      className="bg-black text-white border-t border-gray-800"
+      dir={isRTL ? "rtl" : "ltr"}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 ${
+            isRTL ? "text-right" : "text-left"
+          }`}
+        >
           {/* Company Info */}
-          <div className="lg:col-span-2">
-            <img src="footerlogo.png" alt="logo" />
+          <div
+            className={`lg:col-span-2 flex flex-col ${
+              isRTL ? "items-end text-right" : "items-start text-left"
+            }`}
+          >
+            <img
+              src="footerlogo.png"
+              alt="logo"
+              className={`${isRTL ? "ml-auto" : "mr-auto"}`}
+            />
             <p className="text-[#F4F4F4CC] font-inter font-normal text-sm leading-relaxed mb-6 mt-5 max-w-md">
-              Your premier destination management company in the Gulf region. We
-              create extraordinary luxury experiences that exceed expectations
-              and forge lasting memories across Qatar, UAE, Oman, Saudi Arabia,
-              and Bahrain.
+              {t("footer.description")}
             </p>
 
-            {/* Social Links */}
-            <SocialLinks />
+            <div
+              className={`${isRTL ? "justify-end" : "justify-start"} w-full`}
+            >
+              <SocialLinks />
+            </div>
           </div>
 
           {/* Quick Links */}
           <div>
             <h3 className="text-[#E6C98E] font-inter font-bold text-lg mb-6">
-              Quick Links
+              {t("footer.quickLinks.title")}
             </h3>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="text-[#E5E7EB] text-sm">
-                    {link.label}
+                  <a
+                    href={link.href}
+                    className="text-[#E5E7EB] text-sm hover:text-[#E6C98E] transition"
+                  >
+                    {t(link.labelKey)}
                   </a>
                 </li>
               ))}
@@ -70,13 +90,16 @@ const Footer: React.FC = () => {
           {/* Our Services */}
           <div>
             <h3 className="text-[#E6C98E] font-inter font-bold text-lg mb-6">
-              Our Services
+              {t("footer.services.title")}
             </h3>
             <ul className="space-y-3">
               {serviceLinks.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="text-[#E5E7EB] text-sm">
-                    {link.label}
+                  <a
+                    href={link.href}
+                    className="text-[#E5E7EB] text-sm hover:text-[#E6C98E] transition"
+                  >
+                    {t(link.labelKey)}
                   </a>
                 </li>
               ))}
@@ -86,10 +109,13 @@ const Footer: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div
+            className={`flex flex-col md:flex-row justify-between items-center gap-4 ${
+              isRTL ? "md:flex-row-reverse" : ""
+            }`}
+          >
             <p className="text-gray-500 text-sm">
-              © 2024 DMC Gulf. All rights reserved. | Licensed Travel Agency
-              #04-2024-001
+              © 2024 DMC Gulf. {t("footer.rights")}
             </p>
             <div className="flex flex-wrap justify-center gap-6">
               {legalLinks.map((link, index) => (
@@ -98,7 +124,7 @@ const Footer: React.FC = () => {
                   href={link.href}
                   className="text-gray-500 hover:text-gray-300 transition-colors text-sm"
                 >
-                  {link.label}
+                  {t(link.labelKey)}
                 </a>
               ))}
             </div>
@@ -110,5 +136,3 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
-
-

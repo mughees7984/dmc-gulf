@@ -21,6 +21,8 @@
     "title": "Discover Breathtaking Destinations",
     "subtitle": "From the shimmering skyline of Dubai to the cultural heart of Doha — explore the best of the Gulf.",
     "button": "View All Destinations",
+    "ratingLabel": "Rating",
+    "experiencesLabel": "experiences",
     "cards": {
       "doha": {
         "name": "Doha",
@@ -46,6 +48,7 @@
       }
     }
   },
+
   "services": {
     "badge": "Comprehensive Services",
     "title": "Your Gulf Journey",
@@ -95,6 +98,39 @@
       }
     }
   },
+  "featured": {
+    "title": "Featured Experiences",
+    "startingFrom": "Starting from",
+    "tags": {
+      "featured": "FEATURED",
+      "seasonal": "SEASONAL",
+      "exclusive": "EXCLUSIVE"
+    },
+    "experiences": {
+      "luxuryYacht": {
+        "title": "Luxury Golf Yacht Charter",
+        "description": "Experience world-class golfing aboard a luxury yacht, combining two passions in one unforgettable journey."
+      },
+      "february": {
+        "title": "February Experience",
+        "description": "Discover the magic of winter in the world's most exclusive destinations."
+      },
+      "royalSea": {
+        "title": "Royal Sea Retreat",
+        "description": "An exclusive maritime escape designed for the most discerning travelers."
+      },
+      "arabianNights": {
+        "title": "Arabian Nights Dinner",
+        "description": "An enchanting evening under the stars with authentic cuisine."
+      }
+    },
+    "buttons": {
+      "viewAll": "View All Experiences",
+      "customPackage": "Create Custom Package",
+      "bookNow": "Book Now"
+    }
+  },
+
   "testimonials": {
     "badge": "Client Testimonials",
     "title": "Stories of",
@@ -176,20 +212,20 @@
     "contactTitle": "Contact Information",
     "socialTitle": "Follow Our Journey",
     "socialDescription": "Stay updated with our latest adventures and exclusive offers on social media.",
-    "fields": {
-      "firstName": "First Name",
-      "lastName": "Last Name",
-      "email": "Email Address",
-      "phone": "Phone Number",
-      "destination": "Preferred Destination",
-      "message": "Tell us about your ideal trip"
-    },
-    "placeholders": {
-      "firstName": "John",
-      "lastName": "Doe",
-      "email": "john@example.com",
-      "phone": "+1 (555) 000-0000",
-      "message": "Describe your travel preferences, dates, group size, and any special requirements..."
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "destination": "Preferred Destination",
+    "message": "Tell us about your ideal trip",
+    "messagePlaceholder": "Describe your travel preferences, dates, group size, and any special requirements...",
+    "destinations": {
+      "select": "Select a destination",
+      "dubai": "Dubai",
+      "abu-dhabi": "Abu Dhabi",
+      "qatar": "Qatar",
+      "oman": "Oman",
+      "saudi-arabia": "Saudi Arabia"
     },
     "info": {
       "headOffice": {
@@ -212,13 +248,18 @@
         ]
       }
     },
-    "destinations": {
-      "dubai": "Dubai",
-      "abu-dhabi": "Abu Dhabi",
-      "qatar": "Qatar",
-      "oman": "Oman",
-      "saudi-arabia": "Saudi Arabia"
+    "social": {
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn"
     }
+  },
+  "cta": {
+    "heading": "Ready to Begin Your Gulf Adventure?",
+    "description": "Don't wait to experience the luxury and wonder of the Gulf region. Let us create your perfect journey today.",
+    "bookNow": "Book Now",
+    "requestQuote": "Request Quote"
   },
   "footer": {
     "description": "Your premier destination management company in the Gulf region. We create extraordinary luxury experiences that exceed expectations and forge lasting memories across Qatar, UAE, Oman, Saudi Arabia, and Bahrain.",
@@ -233,8 +274,8 @@
     },
     "services": {
       "title": "Our Services",
-      "hotel": "Hotel Reservations",
-      "flight": "Flight Bookings",
+      "hotels": "Hotel Reservations",
+      "flights": "Flight Bookings",
       "desert": "Desert Adventures",
       "corporate": "Corporate Events",
       "luxury": "Luxury Tours",
@@ -245,6 +286,6 @@
       "terms": "Terms of Service",
       "cookies": "Cookie Policy"
     },
-    "bottomText": "© 2024 DMC Gulf. All rights reserved. | Licensed Travel Agency #04-2024-001"
+    "rights": "All rights reserved. | Licensed Travel Agency #04-2024-001"
   }
 }
